@@ -1,4 +1,4 @@
-name: .NET Build
+name: Spiewosz CI
 
 on:
   push:
