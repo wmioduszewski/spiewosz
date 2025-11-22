@@ -51,4 +51,4 @@ jobs:
             "cd ~/${{ env.VPS_TARGET_DIR }} && \
              docker load -i $IMAGE_FILE && \
              docker rm -f spiewosz-webapp || true && \
-             docker run -d --name spiewosz-webapp -p 20176:8080 spiewosz-webapp:latest"
+             docker run -d --name spiewosz-webapp --restart unless-stopped -p 20176:8080 spiewosz-webapp:latest"
