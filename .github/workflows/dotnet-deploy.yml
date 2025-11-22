@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t $IMAGE_NAME:latest -f src/spiewosz/Dockerfile src/spiewosz
+          docker build -t $IMAGE_NAME:latest -f src/spiewosz/spiewosz.WebApp/Dockerfile src/spiewosz
 
       - name: Save Docker image to tar
         run: |
