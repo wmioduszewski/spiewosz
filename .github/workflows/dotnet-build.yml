@@ -20,7 +20,7 @@ jobs:
         dotnet-version: '10.0.x'
 
     - name: Restore
-      run: dotnet restore src/spiewosz/spiewos.WebApp/spiewosz.WebApp.csproj
+      run: dotnet restore src/spiewosz/spiewosz.WebApp/spiewosz.WebApp.csproj
 
     - name: Build
-      run: dotnet build src/spiewosz/spiewos.WebApp/spiewos.WebApp.csproj --configuration Release --no-restore
+      run: dotnet build src/spiewosz/spiewosz.WebApp/spiewosz.WebApp.csproj --configuration Release --no-restore
