@@ -1,6 +1,6 @@
-# 🎶 Spiewosz
+# 🎶 Śpiewosz
 
-**Spiewosz** to celowo przeinżynierowany, edukacyjny projekt .NET, którego celem jest praktyczne ogarnięcie:
+**Śpiewosz** to celowo przeinżynierowany, edukacyjny projekt .NET, którego celem jest praktyczne ogarnięcie:
 - konteneryzacji (Docker),
 - CI/CD (GitHub Actions),
 - hostingu na VPS,
@@ -79,7 +79,7 @@ Cytrus (HTTPS / proxy)
 
 ---
 
-## 🎯 Dlaczego powstał Spiewosz?
+## 🎯 Dlaczego powstał Śpiewosz?
 
 Projekt ma dwa cele:
 
