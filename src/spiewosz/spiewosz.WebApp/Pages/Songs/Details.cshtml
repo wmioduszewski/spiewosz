@@ -1,0 +1,10 @@
+﻿@page "{id:guid}"
+@model spiewosz.WebApp.Pages.Songs.DetailsModel
+
+<div>
+    <h2>@Model.Song.Title</h2>
+    <p>@Model.Song.Category</p>
+    <pre>@Model.Song.Lyrics</pre>
+</div>
+
+<a asp-page="Index">Wróć do listy</a>

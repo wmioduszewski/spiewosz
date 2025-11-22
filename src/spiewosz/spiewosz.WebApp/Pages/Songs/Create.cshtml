@@ -1,0 +1,22 @@
+﻿@page
+@model spiewosz.WebApp.Pages.Songs.CreateModel
+
+<h1>Dodaj tekst piosenki</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="Song.Title"></label>
+        <input asp-for="Song.Title" />
+    </div>
+    <div>
+        <label asp-for="Song.Category"></label>
+        <input asp-for="Song.Category" />
+    </div>
+    <div>
+        <label asp-for="Song.Lyrics"></label>
+        <textarea asp-for="Song.Lyrics"></textarea>
+    </div>
+    <button type="submit">Dodaj</button>
+</form>
+
+<a asp-page="Index">Wróć do listy</a>

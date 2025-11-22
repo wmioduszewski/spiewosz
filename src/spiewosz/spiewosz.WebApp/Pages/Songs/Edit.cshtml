@@ -1,0 +1,23 @@
+﻿@page "{id:guid}"
+@model spiewosz.WebApp.Pages.Songs.EditModel
+
+<h1>Edytuj</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Song.Id" />
+    <div>
+        <label asp-for="Song.Title"></label>
+        <input asp-for="Song.Title" />
+    </div>
+    <div>
+        <label asp-for="Song.Category"></label>
+        <input asp-for="Song.Category" />
+    </div>
+    <div>
+        <label asp-for="Song.Lyrics"></label>
+        <textarea asp-for="Song.Lyrics"></textarea>
+    </div>
+    <button type="submit">Zapisz</button>
+</form>
+
+<a asp-page="Index">Wróć do listy</a>

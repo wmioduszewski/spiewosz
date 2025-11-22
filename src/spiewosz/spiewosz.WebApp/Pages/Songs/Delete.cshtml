@@ -1,0 +1,16 @@
+﻿@page "{id:guid}"
+@model spiewosz.WebApp.Pages.Songs.DeleteModel
+
+<h1>Usuń piosenkę</h1>
+
+<div>
+    <h2>@Model.Song.Title</h2>
+    <p>@Model.Song.Category</p>
+    <pre>@Model.Song.Lyrics</pre>
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Song.Id" />
+    <button type="submit">Usuń</button>
+    <a asp-page="Index">Anuluj</a>
+</form>

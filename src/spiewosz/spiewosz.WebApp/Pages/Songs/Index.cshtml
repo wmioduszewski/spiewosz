@@ -1,0 +1,31 @@
+﻿@page
+@model spiewosz.WebApp.Pages.Songs.IndexModel
+
+<h1>Piosenki</h1>
+
+<p>
+    <a asp-page="Create">Dodaj nową</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Kategoria</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var item in Model.Songs) {
+        <tr>
+            <td>@item.Title</td>
+            <td>@item.Category</td>
+            <td>
+                <a asp-page="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-page="Details" asp-route-id="@item.Id">Wyświetl</a> |
+                <a asp-page="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
