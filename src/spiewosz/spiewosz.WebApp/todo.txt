@@ -1,0 +1,106 @@
+https - czemu czerwony
+
+problem podobny jak u JKOBB - z produkcji zrob migracje do dev / repo żeby początkowy zestaw piuosenek był nie gorszy niż ostatnio na produkcji
+
+
+
+✅ 1. HEALTHCHECK w Dockerfile
+
+Po co?
+Żeby Docker automatycznie sprawdzał, czy aplikacja żyje, i pokazywał:
+
+STATUS: Up 30s (healthy)
+
+
+Co zrobimy:
+
+Dodamy HEALTHCHECK w Dockerfile.
+
+Upewnimy się, że aplikacja ma endpoint zwracający 200 (/ albo /health).
+
+Ustawimy parametry jak:
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:8080/health || exit 1
+
+✅ 2. Poprawne ustawienie ASPNETCORE_URLS
+
+Po co?
+Żeby Kestrel zawsze słuchał na porcie 8080, na wszystkich interfejsach (0.0.0.0).
+
+To ułatwi healthchecki, debugowanie i uniknie „app dostępna tylko z localhost”.
+
+Co zrobimy:
+
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+
+✅ 3. Restart kontenera (--restart unless-stopped)
+
+Po co?
+Żeby kontener:
+
+startował po restarcie VPS,
+
+restartował się po crashu,
+
+nie znikał w stanie Exited.
+
+Co zmienimy:
+
+W CD workflow:
+
+docker run -d --name spiewosz-webapp \
+  --restart unless-stopped \
+  -p 20176:8080 \
+  spiewosz-webapp:latest
+
+✅ 4. Mount katalogu na logi
+
+Po co?
+Żeby mieć persistent logs, a nie tylko docker logs.
+
+Co zrobimy:
+
+Stworzymy katalog na VPS:
+
+mkdir -p /home/spiewosz/logs
+
+
+Zbindujemy go w docker run:
+
+-v /home/spiewosz/logs:/app/logs
+
+
+(Opcjonalnie jutro) — konfiguracja .NET, żeby pisał do pliku w /app/logs.
+
+✅ 5. (Opcjonalnie na jutro) Minimalny endpoint „/health” w .NET
+
+Po co?
+Żeby healthcheck był stabilny, prosty i zawsze zwracał 200.
+
+W Program.cs:
+
+app.MapGet("/health", () => Results.Ok("OK"));
+
+⭐ Efekt końcowy po wdrożeniu tych 4–5 rzeczy
+
+Docker będzie pokazywał „healthy / unhealthy”.
+
+Kontener nigdy nie zostanie w stanie Exited (restartuje się automatycznie).
+
+Masz trwałe logi na VPS.
+
+Deploy z GitHub Actions będzie bardziej niezawodny.
+
+Monitoring stanie się prosty.
+
+I cały system zacznie wyglądać jak „prawdziwa produkcja”.
+
+Jeśli chcesz, jutro mogę przygotować:
+
+➡️ Pełne gotowe fragmenty YAML dla CD
+➡️ Pełny gotowy Dockerfile z poprawkami
+➡️ Pełny gotowy kod /health
+➡️ Polecenia krok-po-kroku jak to wdrożyć na VPS
+
+Daj znać kiedy wracasz — ruszymy od razu.
