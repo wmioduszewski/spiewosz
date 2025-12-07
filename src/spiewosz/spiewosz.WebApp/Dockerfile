@@ -6,6 +6,7 @@ WORKDIR /src
 
 COPY ["spiewosz.WebApp/spiewosz.WebApp.csproj", "spiewosz.WebApp/"]
 COPY ["spiewosz.ServiceDefaults/spiewosz.ServiceDefaults.csproj", "spiewosz.ServiceDefaults/"]
+COPY ["spiewosz.Data/spiewosz.Data.csproj", "spiewosz.Data/"]
 
 # 2. Restore
 RUN dotnet restore "spiewosz.WebApp/spiewosz.WebApp.csproj"
