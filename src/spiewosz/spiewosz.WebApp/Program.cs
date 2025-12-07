@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using spiewosz.WebApp.Data;
+using spiewosz.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,17 +8,17 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-// Configure SQLite DbContext for Songs
-var connectionString = builder.Configuration.GetConnectionString("Songs") ?? "Data Source=songs.db";
-builder.Services.AddDbContext<SongContext>(options => options.UseSqlite(connectionString));
+// Configure PostgreSQL DbContext for Songs
+var connectionString = builder.Configuration.GetConnectionString("Songs");
+builder.Services.AddDbContext<SongContext>(options => options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
-// ensure database created
+// apply migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<SongContext>();
-    db.Database.EnsureCreated();
+    db.Database.Migrate();
 }
 
 app.MapDefaultEndpoints();

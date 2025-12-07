@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="spiewosz.AppHost/spiewosz.AppHost.csproj" Id="d146890c-1d4d-4186-8467-aced42779543" />
   <Project Path="spiewosz.ServiceDefaults/spiewosz.ServiceDefaults.csproj" />
+  <Project Path="spiewosz.Data/spiewosz.Data.csproj" />
   <Project Path="spiewosz.WebApp/spiewosz.WebApp.csproj" />
 </Solution>
