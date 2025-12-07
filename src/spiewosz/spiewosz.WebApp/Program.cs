@@ -9,6 +9,7 @@ builder.AddServiceDefaults();
 builder.Services.AddRazorPages();
 
 // Configure PostgreSQL DbContext for Songs
+var connectionString = builder.Configuration.GetConnectionString("Songs");
 builder.Services.AddDbContext<SongContext>(options => options.UseNpgsql(connectionString));
 
 var app = builder.Build();
