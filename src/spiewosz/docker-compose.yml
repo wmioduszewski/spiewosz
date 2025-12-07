@@ -1,5 +1,5 @@
 services:
-  db:
+  postgres:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: spiewosz
@@ -21,13 +21,13 @@ services:
       dockerfile: spiewosz.WebApp/Dockerfile
       target: final
     environment:
-      - ConnectionStrings__Songs=Host=db;Database=spiewosz;Username=spiewosz;Password=changeme
+      - ConnectionStrings__Songs=Host=postgres;Database=spiewosz;Username=spiewosz;Password=changeme
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
     ports:
       - "20176:8080"
     depends_on:
-      db:
+      postgres:
         condition: service_healthy
 
 volumes:
