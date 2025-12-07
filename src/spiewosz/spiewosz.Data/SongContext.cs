@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using spiewosz.WebApp.Model;
+using spiewosz.Data.Model;
 
-namespace spiewosz.WebApp.Data
+namespace spiewosz.Data
 {
     public class SongContext : DbContext
     {
@@ -9,6 +9,6 @@ namespace spiewosz.WebApp.Data
         {
         }
 
-        public DbSet<Song> Songs { get; set; }
+        public DbSet<Song> Songs => Set<Song>();
     }
 }

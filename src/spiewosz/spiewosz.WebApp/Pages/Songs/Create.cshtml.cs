@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using spiewosz.WebApp.Data;
-using spiewosz.WebApp.Model;
+using spiewosz.Data;
+using spiewosz.Data.Model;
 
 namespace spiewosz.WebApp.Pages.Songs
 {

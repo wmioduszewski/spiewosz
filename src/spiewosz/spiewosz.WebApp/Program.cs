@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using spiewosz.WebApp.Data;
+using spiewosz.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

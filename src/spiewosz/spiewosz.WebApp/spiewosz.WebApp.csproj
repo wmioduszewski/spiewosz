@@ -20,10 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\spiewosz.ServiceDefaults\spiewosz.ServiceDefaults.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\spiewosz.Data\spiewosz.Data.csproj" />
   </ItemGroup>
 
 </Project>
